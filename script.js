@@ -1,6 +1,6 @@
 const maxResult = 5;
-const maxLatestUsedShortcuts = 1000;
-const searchSelector = 'a,button,.btn';
+const maxLatestUsedShortcuts = 2000;
+const searchSelector = 'a,tr,button,.btn';
 
 let shortcuts = [];
 let lastKey;
@@ -40,7 +40,7 @@ if (window.self === window.top) {
                 slInit();
             }
         });
-    }, 500);
+    }, 300);
 
     /**
      * If Google, set tabindex
@@ -80,7 +80,7 @@ document.onmousedown = function (e) {
 
 document.onkeydown=function(e){
     chrome.storage.sync.get({
-        activateKey: '17'
+        activateKey: '91'
     }, items => {
         activateKey = parseInt(items.activateKey);
     });
@@ -117,14 +117,10 @@ document.onkeydown=function(e){
         return;
     }
 
-    /* if event not is shift */
-    if (currentKey !== activateKey) {
-        lastKey = currentKey;
-        return;
-    }
+    const cmdKey = 91
 
-    /* force double click whether cursor is in textfield */
-    if (e.target.nodeName === 'INPUT' || e.target.nodeName === 'TEXTAREA') {
+    // Only trigger popup if last key is shift
+    if (lastKey !== cmdKey || currentKey !== activateKey) {
         lastKey = currentKey;
         return;
     }
@@ -151,14 +147,14 @@ function slInit() {
             console.info('Latest used');
             console.info(latestUsedShortcuts.length);
             console.info(latestUsedShortcuts);
-            appendSearchBar();
+            showSearchBar();
             setShortcuts(latestUsedShortcuts);
             fillResultBar();
         });
     }
 }
 
-function appendSearchBar() {
+function showSearchBar() {
     cancelSearchBar();
     let e = document.createElement('form');
     e.id = 'sl_wrapper';
