@@ -1,5 +1,5 @@
 const maxResult = 5;
-const maxLatestUsedShortcuts = 2000;
+const maxLatestUsedShortcuts = 3000;
 const searchSelector = 'a,tr,button,.btn';
 
 let shortcuts = [];
@@ -40,37 +40,7 @@ if (window.self === window.top) {
                 slInit();
             }
         });
-    }, 300);
-
-    /**
-     * If Google, set tabindex
-     */
-    function r(f){/in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
-    r(function(){
-        if (window.location.pathname === "/search") {
-
-            /**
-             * Search bar set tabIndex
-             */
-            document.getElementById('lst-ib').tabIndex = 998;
-
-            /**
-             * Focus first element
-             */
-            let googleResultItems = document.getElementById('center_col').querySelectorAll('.r a');
-            if (isElementVisible(googleResultItems[0])) {
-                googleResultItems[0].focus();
-            }
-
-            /**
-             * Set tabIndex to results
-             */
-            for (let i = 0; i < googleResultItems.length; i++) {
-                let googleResultItem = googleResultItems[i];
-                googleResultItem.tabIndex = 999;
-            }
-        }
-    });
+    }, 500);
 }
 
 document.onmousedown = function (e) {
