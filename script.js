@@ -44,6 +44,7 @@ if (window.self === window.top) {
 }
 
 document.onmousedown = function (e) {
+    lastKey = null;
     cancelSearchBar();
 };
 
