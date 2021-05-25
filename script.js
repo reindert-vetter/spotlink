@@ -216,7 +216,7 @@ function getCurrentPageLatestUsed(anchorElements, latestUsed) {
 }
 
 function setLatestUsedShortcuts(element) {
-    if (element.innerText.length < 1) {
+    if (typeof element === 'undefined' || element.innerText.length < 1) {
         console.info('element niet toegevoegd:');
         console.info(element);
         return;
