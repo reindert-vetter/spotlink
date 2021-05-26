@@ -1,7 +1,7 @@
 {
-  "name":"Spotlink",
-  "version":"3.8.6",
-  "description": "Mouse less browsing (without shortcuts)",
+  "name":"Spotlink: Mouseless browsing without shortcuts",
+  "version":"3.8.7",
+  "description": "Navigate the internet without using your mouse. Type to search on the page and to open the link. Spotlink remember your choice and the next time it will be suggested earlier.",
   "manifest_version":2,
   "icons": {
     "16": "media/sl_icon/res/mipmap-mdpi/sl_icon.png",
