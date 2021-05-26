@@ -185,7 +185,7 @@ function setShortcutsFromElements(anchorElements) {
         ) {
             // if icon
             if (anchorElement.offsetWidth < 1 && anchorElement.innerHTML.indexOf('svg') !== -1) {
-                title = title + " " + anchorElement.innerHTML;
+                title = (title + " <img src=\"https://image.flaticon.com/icons/png/512/3342/3342137.png\" style='max-width:10px;margin-top:-3px;'>");
             }
 
             /* set mapping to call this element later */

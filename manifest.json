@@ -1,6 +1,6 @@
 {
   "name":"Spotlink",
-  "version":"3.8.5",
+  "version":"3.8.6",
   "description": "Mouse less browsing (without shortcuts)",
   "manifest_version":2,
   "icons": {
