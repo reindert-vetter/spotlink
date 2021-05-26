@@ -48,6 +48,11 @@ document.onmousedown = function (e) {
     cancelSearchBar();
 };
 
+// switch tap
+document.addEventListener("visibilitychange", event => {
+    lastKey = null;
+    cancelSearchBar();
+})
 
 document.onkeydown=function(e){
     chrome.storage.sync.get({
@@ -115,9 +120,6 @@ function slInit() {
 
         chrome.storage.sync.get(settings => {
             let latestUsedShortcuts = settings["latestUsedShortcuts"] ? settings["latestUsedShortcuts"] : [];
-            console.info('Latest used');
-            console.info(latestUsedShortcuts.length);
-            console.info(latestUsedShortcuts);
             showSearchBar();
             setShortcuts(latestUsedShortcuts);
             fillResultBar();
