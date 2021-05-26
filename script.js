@@ -178,14 +178,19 @@ function setShortcutsFromElements(anchorElements) {
     for (let i = 0; i < anchorElements.length; i++) {
         let anchorElement = anchorElements[i];
         let title = getTitleFromElement(anchorElement);
+        let alias = title.toLowerCase();
 
         if (title.length > 1 &&
-            anchorElement.offsetWidth > 0 &&
             !(title in shortcuts)
         ) {
+            // if icon
+            if (anchorElement.offsetWidth < 1 && anchorElement.innerHTML.indexOf('svg') !== -1) {
+                title = title + " " + anchorElement.innerHTML;
+            }
+
             /* set mapping to call this element later */
-            shortcuts[title.toLowerCase()] = {
-                'alias': title.toLowerCase(),
+            shortcuts[alias] = {
+                'alias': alias,
                 'title': title,
                 'element': anchorElement
             };
@@ -367,6 +372,8 @@ function doSearch() {
 
     if (typeof targetItem.element !== 'undefined') {
         targetItem.element.click();
+    } else {
+        console.log('element undefined to handle targetItem.element.click();')
     }
 
     if (typeof targetItem.custom_function !== 'undefined') {
